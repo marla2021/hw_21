@@ -40,9 +40,9 @@ class Unit:
         pass
 
 class Ghost(Unit):
-    def __init__(self, hp, name):
+    def __init__(self, hp):
         super().__init__(hp)
-        self.name = name
+        self.name = "Ghost"
 
 
 
