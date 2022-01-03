@@ -23,8 +23,6 @@ class Unit:
         return True
 
     def get_damage(self, damage):
-        # — обрабатывает входящий урон с учетом текущего параметра защиты.
-        # Если юнит умирает после атаки, должно быть выброшено исключение UnitDied.
         if damage > self.hp:
             self.hp -= (damage - self.hp)
         self.is_alive()

@@ -1,3 +1,6 @@
+from hero import Unit
+
+
 class Cell:
     def __init__(self, obj):
         self.obj = obj
@@ -9,9 +12,9 @@ class Cell:
         self.obj = obj
 
 class Field:
-    def __init__(self, field, unit, cols, rows):
+    def __init__(self, field, cols, rows):
         self.field = field
-        self.unit = unit
+        self.unit = Unit
         self.cols = cols
         self.rows = rows
 
@@ -34,8 +37,7 @@ class Field:
         # — возвращает свойство field.
         pass
     def get_cols(self):
-        # - возвращает количество столбцов в поле.
-        pass
+        return self.cols == 10
+
     def get_rows(self):
-        # - возвращает количество строк в поле
-        pass
+        return self.rows == 10
