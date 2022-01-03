@@ -22,11 +22,11 @@ class GameController:
 
     def make_field(self):
         fields = []
-        self.col = self.field.get_cols()
-        self.row = self.field.get_rows()
-        for y in range (self.col):
+        col = self.field.get_cols()
+        row = self.field.get_rows()
+        for y in range (col):
             field = []
-            for x in range(self.row):
+            for x in range(row):
                 cell = self.field.cell(x=x,y=y)
                 cell_type = cell.get_object().get_terrain()
                 if self.hero.get_coordinates(x,y):
@@ -35,7 +35,6 @@ class GameController:
                     field.append(self.mapping.get(cell_type,"grass"))
             field.append("".join(field))
         return "\n".join(fields)
-
 
 
     def play(self):
