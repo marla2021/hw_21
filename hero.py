@@ -1,30 +1,33 @@
+from exeptions import UnitDied
+
+
 class Unit:
-    def __init__(self, hp, got_key, coord):
+    def __init__(self, hp):
         self.hp = hp
-        self.got_key = got_key
-        self.coord = coord
+        self.got_key = False
+        self.coord = (0,0)
         self.escaped = False
 
     def has_key(self):
-         # bool — проверяет, есть ли у данного юнита ключ.
-         pass
+        return self.got_key
 
     def set_key(self):
-        # — ставит маркер got_key в True
-        pass
+        self.got_key = True
 
     def has_escaped(self):
-        # → bool — проверяет, удалось ли сбежать.
-        pass
+        return self.escaped
 
     def is_alive(self):
-        # → bool — проверяет, есть ли еще у юнита положительное количество хит-поинтов.
-        pass
+        if self.hp <= 0:
+            raise UnitDied()
+        return True
 
-    def get_damage(self):
+    def get_damage(self, damage):
         # — обрабатывает входящий урон с учетом текущего параметра защиты.
         # Если юнит умирает после атаки, должно быть выброшено исключение UnitDied.
-        pass
+        if damage > self.hp:
+            self.hp -= (damage - self.hp)
+        self.is_alive()
 
     def set_coordinates(self, x, y):
         # — устанавливает координаты юнита.
