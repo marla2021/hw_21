@@ -21,18 +21,18 @@ class Field:
     def cell(self, x, y):
         # — метод, возвращающий объект находящийся по данным координатам;
         pass
-    def move_unit_up(self):
-        # — метод, смещающий юнита вверх;
-        pass
-    def move_unit_down(self):
-        # — метод, смещающий юнита вниз;
-        pass
-    def move_unit_right(self):
-        # — метод, смещающий юнита вправо;
-        pass
-    def move_unit_left(self):
-        # — метод, смещающий юнита влево;
-        pass
+    def move_unit_up(self,x,y):
+        return self.unit.set_coordinates(Unit, x=x, y=y+1)
+
+    def move_unit_down(self,x,y):
+        return self.unit.set_coordinates(Unit, x=x, y=y-1)
+
+    def move_unit_right(self,x,y):
+        return self.unit.set_coordinates(Unit, x=x+1, y=y)
+
+    def move_unit_left(self,x,y):
+        return self.unit.set_coordinates(Unit, x=x-1, y=y)
+
     def get_field(self):
         # — возвращает свойство field.
         pass
