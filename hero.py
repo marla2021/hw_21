@@ -30,20 +30,18 @@ class Unit:
         self.is_alive()
 
     def set_coordinates(self, x, y):
-        # — устанавливает координаты юнита.
-        pass
+        self.coord = (x, y)
 
     def get_coordinates(self):
-        # → tuple — возвращает координаты юнита.
-        pass
+        return self.coord
 
     def has_position(self):
         # bool - проверяет в этих ли координатах установлен юнит
         pass
 
 class Ghost(Unit):
-    def __init__(self, name, got_key, hp, coord, escape):
-        super().__init__(hp, got_key, coord)
+    def __init__(self, hp, name):
+        super().__init__(hp)
         self.name = name
 
 
