@@ -1,46 +1,74 @@
 from field import Cell
 from hero import Ghost, Unit
-from terrain import Grass, Wall
+from terrain import Grass, Wall, Key, Door, Trap
 from field import Field
 
 
 class GameController:
     def __init__(self):
         self.mapping = {
-	    'Wall': '🔲',
-        'Grass': '⬜️',
-	    'Ghost': '👻',
-       	'Key': '🗝',
-     	'Door': '🚪',
-    	'Trap': '💀',
+	    'wall': '🔲',
+        'grass': '⬜️',
+	    'ghost': '👻',
+       	'key': '🗝',
+     	'door': '🚪',
+    	'trap': '💀',
                        }
         self.game_on = True
+
         self.hero = Unit
-        self.field = Field
-        self.col = Field
-        self.row = Field
+        self.field = None
+        self.col = 0
+        self.row = 0
+        self.wall = Wall
+        self.key =Key
 
     def make_field(self):
         fields = []
-        col = self.field.get_cols()
-        row = self.field.get_rows()
-        for y in range (col):
-            field = []
-            for x in range(row):
-                cell = self.field.cell(x=x,y=y)
-                cell_type = cell.get_object().get_terrain()
-                if self.hero.get_coordinates(x,y):
-                    field.append(self.mapping.get(cell_type,"ghost"))
+
+            #fields = []
+        with open('fields_schema.txt','r') as f:
+            arr = f.readlines()
+        row = len(arr)
+        col = len(arr[0])
+        hero = None
+        for line_n, line in enumerate(arr):
+            field_line = []
+            for item_n, item in enumerate(line.strip("\n")):
+                if item == "W":
+                    field_line.append(Cell(Wall()))
+                if item == "g":
+                    field_line.append(Cell(Grass()))
+                if item == "G":
+                    field_line.append(Cell(Grass()))
+                    hero = Ghost([item_n, line_n])
+                    hero.set_coordinates(line_n, item_n)
+                if item == "K":
+                    field_line.append(Cell(Key()))
+                if item == "D":
+                    field_line.append(Cell(Door()))
+                if item == "T":
+                    field_line.append(Cell(Trap(10)))
+            fields.append(field_line)
+            self.field = Field(fields, col,row, hero)
+
+    def _draw_field(self):
+        for y, line in enumerate(self.field.get_field()):
+            s = ""
+            for x, item in enumerate(line):
+                if self.hero.has_position(x, y):
+                    s += self.mapping["ghost"]
                 else:
-                    field.append(self.mapping.get(cell_type,"grass"))
-            field.append("".join(field))
-        return "\n".join(fields)
+                    s += self.mapping[item.get_object().get_terrain()]
+            print(s)
+
 
 
     def play(self):
-        self.ghost = Ghost(100)
-        while self.game_on and not self.ghost.escaped:
-            print(self.make_field())
+        self.hero = Ghost(100)
+        self.make_field()
+        while self.game_on and not self.hero.escaped:
+            print(self._draw_field())
             command = input()
             if command == "w":
                 self.field.move_unit_up()

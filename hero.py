@@ -33,9 +33,8 @@ class Unit:
     def get_coordinates(self):
         return self.coord
 
-    def has_position(self):
-        # bool - проверяет в этих ли координатах установлен юнит
-        pass
+    def has_position(self, x, y):
+        return self.coord[0] == x and self.coord[1] == y
 
 class Ghost(Unit):
     def __init__(self, hp):
