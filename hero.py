@@ -2,10 +2,10 @@ from exeptions import UnitDied
 
 
 class Unit:
-    def __init__(self, hp):
+    def __init__(self, hp,x,y):
         self.hp = hp
         self.got_key = False
-        self.coord = (0,0)
+        self.coord = (x,y)
         self.escaped = False
 
     def has_key(self):
@@ -37,9 +37,9 @@ class Unit:
         return self.coord[0] == x and self.coord[1] == y
 
 class Ghost(Unit):
-    def __init__(self, hp):
-        super().__init__(hp)
+    def __init__(self, hp,x,y):
+        super().__init__(hp,x,y)
         self.name = "Ghost"
-
+        self.set_coordinates(x,y)
 
 
