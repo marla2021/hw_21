@@ -42,7 +42,6 @@ class GameController:
                 if item == "G":
                     field_line.append(Cell(Grass()))
                     hero = Ghost(item_n, line_n,item_n)
-                    # hero.set_coordinates(line_n, item_n)
                 if item == "K":
                     field_line.append(Cell(Key()))
                 if item == "D":

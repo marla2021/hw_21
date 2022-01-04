@@ -1,6 +1,3 @@
-from hero import Unit
-
-
 class Cell:
     def __init__(self, obj):
         self.obj = obj
@@ -10,6 +7,7 @@ class Cell:
 
     def set_object(self, obj):
         self.obj = obj
+
 
 class Field:
     def __init__(self, field, cols, rows, Unit):
@@ -22,7 +20,7 @@ class Field:
         return self.field[x][y]
 
     def move_unit_up(self):
-        x, y  = self.unit.get_coordinates()
+        x,y = self.unit.get_coordinates()
         return self.unit.set_coordinates(x=x, y=y+1)
 
     def move_unit_down(self):
