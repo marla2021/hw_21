@@ -29,6 +29,7 @@ class GameController:
             arr = f.readlines()
         row = len(arr)
         col = len(arr[0])
+        hero = None
         for line_n, line in enumerate(arr):
             field_line = []
             for item_n, item in enumerate(line.strip("\n")):
@@ -62,7 +63,7 @@ class GameController:
 
     def play(self):
         self.make_field()
-        while self.game_on and not self.hero.has_escaped:
+        while self.game_on and not self.hero.escaped:
             print(self._draw_field())
             command = input()
             if command == "w":
