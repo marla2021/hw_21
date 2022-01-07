@@ -41,7 +41,7 @@ class GameController:
                     field_line.append(Cell(Grass()))
                 if item == "G":
                     field_line.append(Cell(Grass()))
-                    hero = Ghost(item_n, line_n,item_n)
+                    self.hero = Ghost(item_n, line_n,item_n)
                 if item == "K":
                     field_line.append(Cell(Key()))
                 if item == "D":
@@ -49,7 +49,7 @@ class GameController:
                 if item == "T":
                     field_line.append(Cell(Trap(10)))
             fields.append(field_line)
-            self.field = Field(fields, col,row, hero)
+            self.field = Field(fields, col,row, self.hero)
 
     def _draw_field(self):
         for y, line in enumerate(self.field.get_field()):
@@ -64,7 +64,6 @@ class GameController:
 
 
     def play(self):
-        self.hero = Ghost(100,3,2)
         self.make_field()
         while self.game_on and not self.hero.escaped:
             print(self._draw_field())
