@@ -33,14 +33,12 @@ class GameController:
         for line_n, line in enumerate(arr):
             field_line = []
             for item_n, item in enumerate(line.strip("\n")):
-
                 if item == "W":
                     field_line.append(Cell(Wall()))
                 if item == "g":
                     field_line.append(Cell(Grass()))
                 if item == "G":
                     field_line.append(Cell(Grass()))
-                    print(item_n, line_n, item_n)
                     self.hero = Ghost(100,item_n,line_n)
                 if item == "K":
                     field_line.append(Cell(Key()))

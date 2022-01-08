@@ -24,25 +24,31 @@ class Field:
 
     def move_unit_up(self):
         x, y = self.unit.get_coordinates()
-        if '''''':
+        if Terrain(terrain="wall", walkable=False):
             self.unit.set_coordinates(x=x, y=y)
         else:
             self.unit.set_coordinates(x=x, y=y-1)
 
     def move_unit_down(self):
-
         x, y = self.unit.get_coordinates()
-        self.unit.set_coordinates(x=x, y=y + 1)
+        if Terrain(terrain="wall", walkable=False):
+            self.unit.set_coordinates(x=x, y=y)
+        else:
+            self.unit.set_coordinates(x=x, y=y + 1)
 
     def move_unit_right(self):
-
         x, y = self.unit.get_coordinates()
-        self.unit.set_coordinates(x=x+1, y=y)
+        if Terrain(terrain="wall", walkable=False):
+            self.unit.set_coordinates(x=x, y=y)
+        else:
+            self.unit.set_coordinates(x=x+1, y=y)
 
     def move_unit_left(self):
-
         x, y = self.unit.get_coordinates()
-        self.unit.set_coordinates(x=x-1, y=y)
+        if Terrain(terrain="wall", walkable=False):
+            self.unit.set_coordinates(x=x, y=y)
+        else:
+            self.unit.set_coordinates(x=x-1, y=y)
 
     def get_field(self):
         return self.field
