@@ -2,8 +2,8 @@ from exeptions import UnitDied
 
 
 class Unit:
-    def __init__(self, x, y):
-        self.hp = 100
+    def __init__(self, hp, x, y):
+        self.hp = hp
         self.got_key = False
         self.coord = (x, y)
         self.escaped = False
@@ -15,7 +15,7 @@ class Unit:
         self.got_key = True
 
     def has_escaped(self):
-        return self.escaped
+        self.escaped = True
 
     def is_alive(self):
         if self.hp <= 0:
@@ -38,7 +38,7 @@ class Unit:
 
 
 class Ghost(Unit):
-    def __init__(self, x, y):
-        super().__init__(x, y)
+    def __init__(self,hp, x, y):
+        super().__init__(hp, x, y)
         self.name = "Ghost"
         self.set_coordinates(x, y)

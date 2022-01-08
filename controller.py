@@ -39,7 +39,7 @@ class GameController:
                     field_line.append(Cell(Grass()))
                 if item == "G":
                     field_line.append(Cell(Grass()))
-                    self.hero = Ghost(item_n,line_n)
+                    self.hero = Ghost(100, item_n,line_n)
                 if item == "K":
                     field_line.append(Cell(Key()))
                 if item == "D":
@@ -63,7 +63,7 @@ class GameController:
 
     def play(self):
         self.make_field()
-        while self.game_on and not self.hero.escaped:
+        while self.game_on and not self.hero.has_escaped():
             print(self._draw_field())
             command = input()
             if command == "w":

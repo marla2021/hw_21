@@ -1,4 +1,4 @@
-from terrain import Wall, Terrain, Trap
+from terrain import Terrain, Wall
 
 
 class Cell:
@@ -26,8 +26,13 @@ class Field:
         x, y = self.unit.get_coordinates()
         if Terrain(terrain="wall", walkable=False):
             self.unit.set_coordinates(x=x, y=y)
-        elif Terrain(terrain="trap", walkable=True):
-            self.unit.get_damage(10)
+        # # elif Terrain(terrain="trap", walkable=True):
+        # #     self.unit.get_damage(10)
+        # # elif Terrain(terrain="key", walkable=True):
+        # #     self.unit.set_coordinates(x=x, y=y-1)
+        # # elif Terrain(terrain="door", walkable=True):
+        # #     if self.unit.got_key():
+        # #         self.unit.has_escaped()
         else:
             self.unit.set_coordinates(x=x, y=y-1)
 
