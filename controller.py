@@ -29,7 +29,7 @@ class GameController:
             arr = f.readlines()
         row = len(arr)
         col = len(arr[0])
-        hero = None
+        # hero = None
         for line_n, line in enumerate(arr):
             field_line = []
             for item_n, item in enumerate(line.strip("\n")):

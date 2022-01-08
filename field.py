@@ -1,3 +1,6 @@
+from terrain import Wall, Terrain, Trap
+
+
 class Cell:
     def __init__(self, obj):
         self.obj = obj
@@ -21,17 +24,23 @@ class Field:
 
     def move_unit_up(self):
         x, y = self.unit.get_coordinates()
-        self.unit.set_coordinates(x=x, y=y-1)
+        if Field(self.field, self.cols, self.rows, self.unit).cell(x, y) == Cell(Wall()):
+            self.unit.set_coordinates(x=x, y=y)
+        else:
+            self.unit.set_coordinates(x=x, y=y-1)
 
     def move_unit_down(self):
+
         x, y = self.unit.get_coordinates()
-        self.unit.set_coordinates(x=x, y=y+1)
+        self.unit.set_coordinates(x=x, y=y + 1)
 
     def move_unit_right(self):
+
         x, y = self.unit.get_coordinates()
         self.unit.set_coordinates(x=x+1, y=y)
 
     def move_unit_left(self):
+
         x, y = self.unit.get_coordinates()
         self.unit.set_coordinates(x=x-1, y=y)
 
@@ -43,3 +52,4 @@ class Field:
 
     def get_rows(self):
         return self.rows
+
