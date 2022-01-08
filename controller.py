@@ -39,7 +39,7 @@ class GameController:
                     field_line.append(Cell(Grass()))
                 if item == "G":
                     field_line.append(Cell(Grass()))
-                    self.hero = Ghost(100,item_n,line_n)
+                    self.hero = Ghost(item_n,line_n)
                 if item == "K":
                     field_line.append(Cell(Key()))
                 if item == "D":
