@@ -26,7 +26,7 @@ class Field:
         x, y = self.unit.get_coordinates()
         if Terrain(terrain="wall", walkable=False):
             self.unit.set_coordinates(x=x, y=y)
-        if Terrain(terrain="trap", walkable=True):
+        elif Terrain(terrain="trap", walkable=True):
             self.unit.get_damage(10)
         else:
             self.unit.set_coordinates(x=x, y=y-1)
