@@ -24,7 +24,7 @@ class Field:
 
     def move_unit_up(self):
         x, y = self.unit.get_coordinates()
-        if Field(self.field, self.cols, self.rows, self.unit).cell(x, y) == Cell(Wall()):
+        if '''''':
             self.unit.set_coordinates(x=x, y=y)
         else:
             self.unit.set_coordinates(x=x, y=y-1)
