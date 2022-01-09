@@ -2,13 +2,13 @@ from exeptions import UnitDied
 
 
 class Unit:
-    def __init__(self, hp, x, y):
+    def __init__(self, hp:int, x, y):
         self.hp = hp
         self.got_key = False
         self.coord = (x, y)
         self.escaped = False
 
-    def has_key(self):
+    def got_key(self):
         return self.got_key
 
     def set_key(self):
@@ -22,10 +22,14 @@ class Unit:
             raise UnitDied()
         return True
 
-    def get_damage(self, damage):
+    def get_damage(self, damage:int):
         if damage > self.hp:
             self.hp -= (damage - self.hp)
         self.is_alive()
+
+    def damage(self, damage: int):
+        self.hp -= (self.hp-damage)
+        return self.hp()
 
     def set_coordinates(self, x, y):
         self.coord = (x, y)

@@ -21,7 +21,7 @@ class Key(Terrain):
         super().__init__(terrain='key', walkable=True)
 
     def step_on(self, unit):
-        unit.set_key()
+        return unit.set_key()
 
 
 class Door(Terrain):
