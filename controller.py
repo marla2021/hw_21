@@ -76,3 +76,4 @@ class GameController:
                 self.field.move_unit_down()
             if command in ["stop", "exit"]:
                 self.game_on = False
+                print("Уже уходите?!")
