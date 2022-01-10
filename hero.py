@@ -8,7 +8,7 @@ class Unit:
         self.coord = (x, y)
         self.escaped = False
 
-    def got_key(self):
+    def get_key(self):
         return self.got_key
 
     def set_key(self):
